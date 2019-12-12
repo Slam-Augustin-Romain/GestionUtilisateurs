@@ -42,11 +42,6 @@ class Student
     private $Status;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
-     */
-    private $lv2;
-
-    /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $comment;
@@ -112,18 +107,6 @@ class Student
     public function setStatus(string $Status): self
     {
         $this->Status = $Status;
-
-        return $this;
-    }
-
-    public function getLv2(): ?string
-    {
-        return $this->lv2;
-    }
-
-    public function setLv2(?string $lv2): self
-    {
-        $this->lv2 = $lv2;
 
         return $this;
     }
