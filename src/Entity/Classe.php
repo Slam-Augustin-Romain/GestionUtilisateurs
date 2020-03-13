@@ -64,23 +64,23 @@ class Classe
         return $this->eleves;
     }
 
-    public function addElefe(Eleves $elefe): self
+    public function addeleve(Eleves $eleve): self
     {
-        if (!$this->eleves->contains($elefe)) {
-            $this->eleves[] = $elefe;
-            $elefe->setClasse($this);
+        if (!$this->eleves->contains($eleve)) {
+            $this->eleves[] = $eleve;
+            $eleve->setClasse($this);
         }
 
         return $this;
     }
 
-    public function removeElefe(Eleves $elefe): self
+    public function removeeleve(Eleves $eleve): self
     {
-        if ($this->eleves->contains($elefe)) {
-            $this->eleves->removeElement($elefe);
+        if ($this->eleves->contains($eleve)) {
+            $this->eleves->removeElement($eleve);
             // set the owning side to null (unless already changed)
-            if ($elefe->getClasse() === $this) {
-                $elefe->setClasse(null);
+            if ($eleve->getClasse() === $this) {
+                $eleve->setClasse(null);
             }
         }
 

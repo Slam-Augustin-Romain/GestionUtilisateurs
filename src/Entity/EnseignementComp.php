@@ -80,23 +80,23 @@ class EnseignementComp
         return $this->eleves;
     }
 
-    public function addElefe(Eleves $elefe): self
+    public function addeleve(Eleves $eleve): self
     {
-        if (!$this->eleves->contains($elefe)) {
-            $this->eleves[] = $elefe;
-            $elefe->setEnseignementcomp($this);
+        if (!$this->eleves->contains($eleve)) {
+            $this->eleves[] = $eleve;
+            $eleve->setEnseignementcomp($this);
         }
 
         return $this;
     }
 
-    public function removeElefe(Eleves $elefe): self
+    public function removeeleve(Eleves $eleve): self
     {
-        if ($this->eleves->contains($elefe)) {
-            $this->eleves->removeElement($elefe);
+        if ($this->eleves->contains($eleve)) {
+            $this->eleves->removeElement($eleve);
             // set the owning side to null (unless already changed)
-            if ($elefe->getEnseignementcomp() === $this) {
-                $elefe->setEnseignementcomp(null);
+            if ($eleve->getEnseignementcomp() === $this) {
+                $eleve->setEnseignementcomp(null);
             }
         }
 

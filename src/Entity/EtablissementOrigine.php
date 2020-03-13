@@ -19,7 +19,7 @@ class EtablissementOrigine
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $nomm_etablissement_origine;
+    private $nom_etablissement_origine;
 
     public function getId(): ?int
     {
@@ -28,12 +28,12 @@ class EtablissementOrigine
 
     public function getNommEtablissementOrigine(): ?string
     {
-        return $this->nomm_etablissement_origine;
+        return $this->nom_etablissement_origine;
     }
 
-    public function setNommEtablissementOrigine(?string $nomm_etablissement_origine): self
+    public function setNommEtablissementOrigine(?string $nom_etablissement_origine): self
     {
-        $this->nomm_etablissement_origine = $nomm_etablissement_origine;
+        $this->nom_etablissement_origine = $nom_etablissement_origine;
 
         return $this;
     }
