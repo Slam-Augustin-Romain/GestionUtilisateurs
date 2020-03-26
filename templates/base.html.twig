@@ -23,20 +23,35 @@
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_login') }}">Login</a>
-            </li>
             <li class="nav-item active">
                 <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
             </li>
+            {% if not app.user %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+            </li>
+            {% endif %}
             {# <li class="nav-item">
                 <a class="nav-link" href="{{ path('category_index') }}">Category</a>
             </li> #}
             {% if is_granted('ROLE_SUPER-ADMIN') %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('user_index') }}">Users index</a>
+                <a class="nav-link" href="{{ path('user_index') }}">Users</a>
             </li>
             {% endif %}
+            
+            {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('eleves_index') }}">Eleves</a>
+            </li>
+            {% endif %}
+
+            {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('classe_index') }}">Classe</a>
+            </li>
+            {% endif %}
+            
             
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -51,9 +66,21 @@
             </li>
         </div>
         </nav>
-        {% block body %}
+         <main role="main" class="container">
+            <div class="starter-template"> {% block body %}{% endblock %}
+            </div>
+        </main>
+        {% block javascripts %}
+        <script>
+         $(document).ready(function() {
+        // you may need to change this code if you are not using Bootstrap Datepicker
+        $('.js-datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+            });
+        });
+        </script>
         {% endblock %}
-        {% block javascripts %}{% endblock %}
         
     </body>
+    
 </html>
