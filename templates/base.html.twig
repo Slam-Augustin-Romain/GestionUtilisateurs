@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bienvenue!{% endblock %}</title>
         {% block stylesheets %}
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -28,7 +28,7 @@
             </li>
             {% if not app.user %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+                <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
             </li>
             {% endif %}
             {# <li class="nav-item">
@@ -36,7 +36,7 @@
             </li> #}
             {% if is_granted('ROLE_SUPER-ADMIN') %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('user_index') }}">Users</a>
+                <a class="nav-link" href="{{ path('user_index') }}">Utilisateurs</a>
             </li>
             {% endif %}
             
@@ -61,9 +61,11 @@
             {# <li class="nav-item">
                 <a class="btn btn-primary" href="{{ path('app_register') }}">Sign In</a>
             </li> #}
+            {% if app.user %}
             <li class="nav-item">
-                <a class="btn btn-warning" href="/logout">Logout</a>
+                <a class="btn btn-warning" href="/logout">Deconnexion</a>
             </li>
+            {% endif %}
         </div>
         </nav>
          <main role="main" class="container">
