@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bienvenue!{% endblock %}</title>
         {% block stylesheets %}
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -16,41 +16,42 @@
     <body>
 
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">SlamQuiz</a>
+        <a class="navbar-brand" href="#">GestionUtilisateurs</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarsExampleDefault">
             <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_login') }}">Login</a>
-            </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
             </li>
+            {% if not app.user %}
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
+            {% endif %}
             {# <li class="nav-item">
                 <a class="nav-link" href="{{ path('category_index') }}">Category</a>
             </li> #}
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans %}Dropdown{% endtrans %}</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
             {% if is_granted('ROLE_SUPER-ADMIN') %}
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('user_index') }}">Users index</a>
+                <a class="nav-link" href="{{ path('user_index') }}">Utilisateurs</a>
             </li>
             {% endif %}
+            
+            {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('eleves_index') }}">Eleves</a>
+            </li>
+            {% endif %}
+
+            {% if is_granted('ROLE_ADMIN') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('classe_index') }}">Classe</a>
+            </li>
+            {% endif %}
+            
             
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -60,14 +61,28 @@
             {# <li class="nav-item">
                 <a class="btn btn-primary" href="{{ path('app_register') }}">Sign In</a>
             </li> #}
+            {% if app.user %}
             <li class="nav-item">
-                <a class="btn btn-warning" href="/logout">Logout</a>
+                <a class="btn btn-warning" href="/logout">Deconnexion</a>
             </li>
+            {% endif %}
         </div>
         </nav>
-        {% block body %}
+         <main role="main" class="container">
+            <div class="starter-template"> {% block body %}{% endblock %}
+            </div>
+        </main>
+        {% block javascripts %}
+        <script>
+         $(document).ready(function() {
+        // you may need to change this code if you are not using Bootstrap Datepicker
+        $('.js-datepicker').datepicker({
+            format: 'yyyy-mm-dd'
+            });
+        });
+        </script>
         {% endblock %}
-        {% block javascripts %}{% endblock %}
         
     </body>
+    
 </html>
