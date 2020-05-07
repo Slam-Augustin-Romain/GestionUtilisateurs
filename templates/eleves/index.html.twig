@@ -33,17 +33,17 @@
                 <td>{{ elefe.remarque }}</td>
                 <td>{{ elefe.amenagementPedagogique }}</td>
                 <td>
-                    <a href="{{ path('eleves_show', {'id': elefe.id}) }}">show</a>
-                    <a href="{{ path('eleves_edit', {'id': elefe.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('eleves_show', {'id': elefe.id}) }}">Afficher</a>
+                    <a class="btn btn-primary" href="{{ path('eleves_edit', {'id': elefe.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="10">no records found</td>
+                <td colspan="10">Pas d'enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('eleves_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('eleves_new') }}">Ajouter un élève</a>
 {% endblock %}
