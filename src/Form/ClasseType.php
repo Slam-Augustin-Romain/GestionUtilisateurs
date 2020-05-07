@@ -8,8 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use App\Entity\Diplome;
-//use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+//use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class ClasseType extends AbstractType
 {
@@ -20,11 +20,15 @@ class ClasseType extends AbstractType
             // ->add('diplome')
         ;
 
-        $builder->add('diplome', CollectionType::class, array(
-            'entry_type' => DiplomeType::class,
-            'entry_options' => array(
-                'label' => false,
-            )
+        // $builder->add('diplome', CollectionType::class, array(
+        //     'entry_type' => DiplomeType::class,
+        //     'entry_options' => array(
+        //         'label' => false,
+        //     )
+        // ));
+        $builder->add('diplome', EntityType::class, array(
+            'class' => Diplome::class,
+            'choice_label' => 'nom_diplome',
         ));
     }
 
