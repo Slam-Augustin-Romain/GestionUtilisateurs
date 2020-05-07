@@ -19,17 +19,17 @@
                 <td>{{ classe.id }}</td>
                 <td>{{ classe.nomClasse }}</td>
                 <td>
-                    <a href="{{ path('classe_show', {'id': classe.id}) }}">show</a>
-                    <a href="{{ path('classe_edit', {'id': classe.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('classe_show', {'id': classe.id}) }}">Afficher</a>
+                    <a class="btn btn-primary" href="{{ path('classe_edit', {'id': classe.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Pas d'enregistrement trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('classe_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('classe_new') }}">Ajouter une classe</a>
 {% endblock %}

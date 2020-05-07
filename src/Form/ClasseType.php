@@ -7,14 +7,25 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use App\Entity\Diplome;
+//use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+
 class ClasseType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('nom_classe')
-            ->add('diplome')
+            // ->add('diplome')
         ;
+
+        $builder->add('diplome', CollectionType::class, array(
+            'entry_type' => DiplomeType::class,
+            'entry_options' => array(
+                'label' => false,
+            )
+        ));
     }
 
     public function configureOptions(OptionsResolver $resolver)
