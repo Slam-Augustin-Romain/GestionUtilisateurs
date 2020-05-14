@@ -17,7 +17,7 @@ class Eleves
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=255)
      */
     private $nom;
 
@@ -27,7 +27,7 @@ class Eleves
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=1)
+     * @ORM\Column(type="string", length=255)
      */
     private $sexe;
 
@@ -37,12 +37,12 @@ class Eleves
     private $date_naissance;
 
     /**
-     * @ORM\Column(type="string", length=30)
+     * @ORM\Column(type="string", length=255)
      */
     private $statut;
 
     /**
-     * @ORM\Column(type="string", length=30, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $lv2;
 
